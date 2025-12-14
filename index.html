@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title> Ohana Movers | Local Moving Company</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #10b981;
+      --danger: #ef4444;
+      --radius-lg: 1rem;
+      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    header {
+      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: 0.04em;
+      color: var(--primary-dark);
+    }
+
+    .nav-links a {
+      margin-left: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.1s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    main {
+      padding: 2rem 0 3rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 30rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge {
+      font-size: 0.8rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: #e5f3ff;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 1.5rem;
+    }
+
+    .hero-card-title {
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-card-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+      color: var(--text-muted);
+    }
+
+    .hero-card-row span:last-child {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .services {
+      margin-bottom: 2.5rem;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+      gap: 1rem;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: #ecfdf5;
+      color: var(--accent);
+      margin-top: 0.4rem;
+    }
+
+    /* Booking Section */
+    .booking {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem 1rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.55rem 0.6rem;
+      border-radius: 0.7rem;
+      border: 1px solid #d1d5db;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border 0.15s ease, box-shadow 0.15s ease;
+      background-color: #f9fafb;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.35);
+      background-color: #ffffff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .small-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .summary-card {
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    .summary-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.75rem;
+    }
+
+    .summary-header h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .summary-total {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.25rem;
+    }
+
+    .summary-line span:last-child {
+      font-weight: 600;
+    }
+
+    .summary-muted {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 0.5rem;
+    }
+
+    .error {
+      color: var(--danger);
+      font-size: 0.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      padding-top: 2rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero,
+      .booking {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      main {
+        padding-top: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Ohana Movers</div>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#booking">Get a Quote</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#booking" class="btn">Get a Free Quote</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1 class="hero-title">Stress-free moving, right on schedule.</h1>
+        <p class="hero-subtitle">
+          Local, reliable movers for apartments, houses, and offices. Pick your date,
+          how many movers you need, and we’ll give you an instant price estimate.
+        </p>
+        <div class="hero-badges">
+          <span class="badge">Licensed & Insured</span>
+          <span class="badge">Same-day moves (when available)</span>
+          <span class="badge">No hidden fees</span>
+        </div>
+        <a href="#booking" class="btn">Check availability</a>
+      </div>
+
+      <div class="card">
+        <div class="hero-card-title">Why people move with us</div>
+        <div class="hero-card-row">
+          <span>On-time arrival rate</span>
+          <span>98%</span>
+        </div>
+        <div class="hero-card-row">
+          <span>Average rating</span>
+          <span>4.9 / 5</span>
+        </div>
+        <div class="hero-card-row">
+          <span>Areas we cover</span>
+          <span>Metro & surrounding cities</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services">
+      <h2 class="section-title">Services</h2>
+      <p class="section-subtitle">
+        Whether you’re moving across town or just across the hall, we’ve got a crew and truck that fits.
+      </p>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <h3>Local Residential Moves</h3>
+          <p>
+            Apartments, condos, and houses. We handle loading, unloading, and basic furniture placement.
+          </p>
+          <span class="pill">Most popular</span>
+        </div>
+        <div class="service-card">
+          <h3>Office & Commercial</h3>
+          <p>
+            Evening and weekend availability to keep your business running with minimal downtime.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Labor-Only Help</h3>
+          <p>
+            Already have a truck or pod? Hire our movers to help you load or unload.
+          </p>
+          <span class="pill">From 2 movers</span>
+        </div>
+        <div class="service-card">
+          <h3>Packing & Supplies</h3>
+          <p>
+            Optional packing, wrapping, and disassembly services. Boxes and materials available on request.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKING / QUOTE -->
+    <section id="booking" class="booking">
+      <div>
+        <h2 class="section-title">Instant quote</h2>
+        <p class="section-subtitle">
+          Choose your date, number of movers, and estimated hours to get a ballpark price.
+          We’ll confirm details before final booking.
+        </p>
+
+        <form
+        id="quote-form"
+        class="card"
+        action="https://formspree.io/f/mgvgqeoy"
+        method="POST"
+        >
+        <div id="form-error" class="error" style="display:none;"></div>
+
+        <div class="form-grid">
+            <div>
+            <label for="move-date">Move date</label>
+            <input type="date" id="move-date" name="move_date" required />
+            <p class="small-hint">We’ll confirm availability after you submit.</p>
+            </div>
+
+            <div>
+            <label for="time-of-day">Preferred time</label>
+            <select id="time-of-day" name="time_of_day">
+                <option value="Morning">Morning (8am – 12pm)</option>
+                <option value="Afternoon">Afternoon (12pm – 4pm)</option>
+                <option value="Evening">Evening (4pm – 8pm)</option>
+                <option value="Flexible">Flexible / Anytime</option>
+            </select>
+            </div>
+
+            <div>
+            <label for="movers">Number of movers</label>
+            <select id="movers" name="movers">
+                <option value="2">2 movers</option>
+                <option value="3">3 movers</option>
+                <option value="4">4 movers</option>
+                <option value="5">5 movers</option>
+            </select>
+            <p class="small-hint">2–3 movers is typical for apartments.</p>
+            </div>
+
+            <div>
+            <label for="hours">Estimated hours</label>
+            <input type="number" id="hours" name="hours" min="1" step="0.5" value="3" />
+            <p class="small-hint">You’re only charged for actual time used.</p>
+            </div>
+
+            <div>
+            <label for="rate">Hourly rate per mover ($)</label>
+            <input type="number" id="rate" name="rate" min="0" step="1" value="60" />
+            <p class="small-hint">Change this to match your pricing.</p>
+            </div>
+
+            <div>
+            <label for="truck-fee">Truck / travel fee ($)</label>
+            <input type="number" id="truck-fee" name="truck_fee" min="0" step="1" value="80" />
+            <p class="small-hint">Set to 0 if not applicable.</p>
+            </div>
+        </div>
+
+        <div>
+            <label for="from-address">Pickup address</label>
+            <input
+            type="text"
+            id="from-address"
+            name="pickup_address"
+            placeholder="Street, city, ZIP"
+            />
+        </div>
+
+        <div style="margin-top:0.75rem;">
+            <label for="to-address">Drop-off address</label>
+            <input
+            type="text"
+            id="to-address"
+            name="dropoff_address"
+            placeholder="Street, city, ZIP"
+            />
+        </div>
+
+        <div style="margin-top:0.75rem;">
+            <label for="details">Notes (stairs, elevator, special items, etc.)</label>
+            <textarea
+            id="details"
+            name="notes"
+            placeholder="Tell us about any stairs, elevators, or large/heavy items."
+            ></textarea>
+        </div>
+
+        <div style="margin-top:1rem; display:flex; justify-content:space-between; gap:0.75rem; align-items:center;">
+            <button type="submit" class="btn">Request my quote</button>
+            <span class="small-hint">
+            This is an estimate only. A team member will follow up to confirm.
+            </span>
+        </div>
+        </form>
+
+      </div>
+
+      <!-- Summary / Estimate -->
+      <aside class="summary-card" id="summary">
+        <div class="summary-header">
+          <h3>Your estimate</h3>
+          <div class="summary-total" id="summary-total">$0</div>
+        </div>
+
+        <div class="summary-line">
+          <span>Labor (movers × hours × rate)</span>
+          <span id="summary-labor">$0</span>
+        </div>
+        <div class="summary-line">
+          <span>Truck / travel fee</span>
+          <span id="summary-truck">$0</span>
+        </div>
+        <hr style="border:none;border-top:1px dashed #4b5563; margin:0.5rem 0 0.7rem;" />
+        <div class="summary-line">
+          <span>Estimated total</span>
+          <span id="summary-total-bottom">$0</span>
+        </div>
+
+        <p class="summary-muted" id="summary-note">
+          Select a date and enter your details to see a live estimate.
+        </p>
+      </aside>
+    </section>
+
+    <!-- CONTACT / FOOTER -->
+    <section id="contact" style="margin-top:3rem;">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">
+        Have questions or need a custom quote? Reach out by phone, text, or email.
+        Update these details with your friend’s real contact info.
+      </p>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <h3>Call or text</h3>
+          <p><strong>Phone:</strong> (555) 123-4567</p>
+          <p><strong>Hours:</strong> Mon–Sat, 8am–6pm</p>
+        </div>
+        <div class="service-card">
+          <h3>Email</h3>
+          <p><strong>Email:</strong> hello@friendlymovers.com</p>
+          <p>We typically respond within one business day.</p>
+        </div>
+        <div class="service-card">
+          <h3>Service area</h3>
+          <p>Serving Metro City and surrounding suburbs within a 40-mile radius.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © <span id="year"></span> Friendly Movers. All rights reserved.
+    </div>
+  </main>
+
+  <script>
+    // Set minimum date to today
+    (function () {
+      const dateInput = document.getElementById("move-date");
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, "0");
+      const dd = String(today.getDate()).padStart(2, "0");
+      const value = yyyy + "-" + mm + "-" + dd;
+      dateInput.min = value;
+    })();
+
+    // Update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const moversEl = document.getElementById("movers");
+    const hoursEl = document.getElementById("hours");
+    const rateEl = document.getElementById("rate");
+    const truckFeeEl = document.getElementById("truck-fee");
+    const dateEl = document.getElementById("move-date");
+    const timeEl = document.getElementById("time-of-day");
+
+    const summaryLabor = document.getElementById("summary-labor");
+    const summaryTruck = document.getElementById("summary-truck");
+    const summaryTotal = document.getElementById("summary-total");
+    const summaryTotalBottom = document.getElementById("summary-total-bottom");
+    const summaryNote = document.getElementById("summary-note");
+    const formError = document.getElementById("form-error");
+    const quoteForm = document.getElementById("quote-form");
+
+    function formatCurrency(amount) {
+      return "$" + amount.toFixed(2);
+    }
+
+    function updateEstimate() {
+      const movers = parseInt(moversEl.value || "0", 10);
+      const hours = parseFloat(hoursEl.value || "0");
+      const rate = parseFloat(rateEl.value || "0");
+      const truck = parseFloat(truckFeeEl.value || "0");
+
+      if (movers <= 0 || hours <= 0 || rate < 0 || truck < 0) {
+        summaryLabor.textContent = "$0.00";
+        summaryTruck.textContent = "$0.00";
+        summaryTotal.textContent = "$0.00";
+        summaryTotalBottom.textContent = "$0.00";
+        summaryNote.textContent =
+          "Please enter valid numbers for movers, hours, and rate to see an estimate.";
+        return;
+      }
+
+      const labor = movers * hours * rate;
+      const total = labor + truck;
+
+      summaryLabor.textContent = formatCurrency(labor);
+      summaryTruck.textContent = formatCurrency(truck);
+      summaryTotal.textContent = formatCurrency(total);
+      summaryTotalBottom.textContent = formatCurrency(total);
+
+      if (dateEl.value) {
+        summaryNote.textContent =
+          "Estimated total for " +
+          dateEl.value +
+          " (" +
+          timeEl.value +
+          ") — final amount may vary based on actual time used and access details.";
+      } else {
+        summaryNote.textContent =
+          "Select a date to lock this estimate to a specific day.";
+      }
+    }
+
+    [moversEl, hoursEl, rateEl, truckFeeEl, dateEl, timeEl].forEach((el) => {
+      el.addEventListener("input", updateEstimate);
+      el.addEventListener("change", updateEstimate);
+    });
+
+    quoteForm.addEventListener("submit", function (e) {
+    formError.style.display = "none";
+
+    if (!dateEl.value) {
+        e.preventDefault();
+        formError.textContent = "Please choose a move date.";
+        formError.style.display = "block";
+        return;
+    }
+
+    // Let the form submit to Formspree (no alert, no reset).
+    });
+
+    async function loadSiteContent() {
+  try {
+    const res = await fetch("/content/site.json", { cache: "no-store" });
+    const data = await res.json();
+
+    // Company name / branding
+    document.querySelector(".logo").textContent = data.companyName || "Ohana Movers";
+    document.title = (data.companyName || "Ohana Movers") + " | Local Moving Company";
+
+    // Hero
+    document.querySelector(".hero-title").textContent = data.heroTitle || "";
+    document.querySelector(".hero-subtitle").textContent = data.heroSubtitle || "";
+
+    // Badges
+    const badgesWrap = document.querySelector(".hero-badges");
+    if (badgesWrap && Array.isArray(data.badges)) {
+      badgesWrap.innerHTML = data.badges.map(b => `<span class="badge">${b}</span>`).join("");
+    }
+
+    // Services
+    const serviceGrid = document.querySelector(".service-grid");
+    if (serviceGrid && Array.isArray(data.services)) {
+      serviceGrid.innerHTML = data.services.map(s => `
+        <div class="service-card">
+          <h3>${s.title || ""}</h3>
+          <p>${s.description || ""}</p>
+          ${s.pill ? `<span class="pill">${s.pill}</span>` : ""}
+        </div>
+      `).join("");
+    }
+
+    // Pricing defaults (sets initial form values)
+    if (data.pricing) {
+      if (data.pricing.defaultMovers) moversEl.value = String(data.pricing.defaultMovers);
+      if (data.pricing.defaultHours) hoursEl.value = String(data.pricing.defaultHours);
+      if (data.pricing.defaultRate) rateEl.value = String(data.pricing.defaultRate);
+      if (data.pricing.defaultTruckFee !== undefined) truckFeeEl.value = String(data.pricing.defaultTruckFee);
+    }
+
+  } catch (e) {
+    console.warn("Could not load site.json; using defaults.", e);
+  }
+
+  // Always compute estimate after content load attempt
+  updateEstimate();
+}
+
+    
+    // Initialize content + estimate on load
+  loadSiteContent();
+
+
+  </script>
+</body>
+</html>
