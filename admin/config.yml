@@ -1,0 +1,32 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "site"
+    label: "Site Settings"
+    files:
+      - file: "content/site.json"
+        label: "Website Content"
+        name: "settings"
+        fields:
+          - { label: "Company Name", name: "companyName", widget: "string" }
+          - { label: "Tagline (Hero Title)", name: "heroTitle", widget: "string" }
+          - { label: "Hero Subtitle", name: "heroSubtitle", widget: "text" }
+
+          - label: "Badges"
+            name: "badges"
+            widget: "list"
+            field: { label: "Badge", name: "badge", widget: "string" }
+
+          - label: "Pricing Defaults"
+            name: "pricing"
+            widget: "object"
+            fields:
+              - { label: "Default Hourly Rate Per Mover", name: "defaultRate", widget: "number", value_type: "int" }
+              - { label: "Default Truck/Travel Fee", name: "defaultTruckFee", widget: "number", value_type: "int" }
+              - { label: "Default Movers", name: "defaultMovers", widget: "number", value_type: "int", min: 1, max: 10 }
+              - { label: "Default Hours", name: "defaultHours", widget: "number" }
